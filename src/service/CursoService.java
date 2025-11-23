@@ -8,7 +8,7 @@ public class CursoService {
 
     public void cadastrar(Curso c) {
         cursos.add(c);
-        System.out.println("Curso cadastrado!");
+        System.out.println("Curso cadastrado!"+ c.getNome());
     }
 
     public void listar() {

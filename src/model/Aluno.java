@@ -8,14 +8,17 @@ public class Aluno extends Pessoa {
 
     }
     public Aluno(String nome, int idade, int matricula) {
+
         super(nome, idade, matricula);
     }
 
     public void registrarPresenca() {
-        presencas++; }
+        presencas++;
+    }
 
     public void setTotalAulas(int totalAulas) {
-        this.totalAulas = totalAulas; }
+        this.totalAulas = totalAulas;
+    }
 
     public void setNotas(double n1, double n2, double n3) {
         this.nota1 = n1;

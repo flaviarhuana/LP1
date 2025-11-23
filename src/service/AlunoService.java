@@ -8,7 +8,7 @@ public class AlunoService {
 
     public void cadastrar(Aluno a) {
         alunos.add(a);
-        System.out.println("Aluno cadastrado!");
+        System.out.println("Aluno cadastrado!" + a.getNome());
     }
 
     public void listar() {
@@ -19,7 +19,8 @@ public class AlunoService {
 
     public Aluno buscarPorNome(String nome) {
         for (Aluno a : alunos) {
-            if (a.getNome().equalsIgnoreCase(nome)) return a;
+            if (a.getNome().equalsIgnoreCase(nome))
+                return a;
         }
         return null;
     }
