@@ -1,6 +1,6 @@
 package model;
 
-public class Pessoa {
+public abstract class Pessoa {
     protected String nome;
     protected int idade;
     protected int matricula;
@@ -20,17 +20,21 @@ public class Pessoa {
     }
 
     public int getIdade() {
+
         return idade;
     }
     public void setIdade(int idade) {
+
         this.idade = idade;
     }
 
     public int getMatricula() {
+
         return matricula;
     }
 
     public void setMatricula(int matricula) {
+
         this.matricula = matricula;
     }
 }
