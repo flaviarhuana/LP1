@@ -1,5 +1,5 @@
 # Linguagem à Programação
-Atividades referentes à disciplina Linguagem à Programação I, apresentadas como requisito para aprovação.
+Projeto EduConnect, apresentado como requisito para aprovação na disciplina.
 
 Discente: Flávia Rhuana Pereira Sales
 
