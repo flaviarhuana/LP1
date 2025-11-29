@@ -8,6 +8,7 @@ public class AlunoController {
     private AlunoService alunoService;
 
     public AlunoController(AlunoService alunoService) {
+
         this.alunoService = alunoService;
     }
 
@@ -16,12 +17,12 @@ public class AlunoController {
         alunoService.cadastrar(a);
     }
 
-    public void registrarPresenca(String nomeAluno, int totalAulas) {
+    public void registrarPresenca(String nomeAluno, int totalAulas, int presencas) {
         Aluno a = alunoService.buscarPorNome(nomeAluno);
 
         if (a != null) {
             a.setTotalAulas(totalAulas);
-            a.registrarPresenca();
+            a.setPresencas(presencas);
         } else {
             System.out.println("Aluno não encontrado.");
         }
@@ -48,10 +49,12 @@ public class AlunoController {
     }
 
     public Aluno buscarAluno(String nome) {
+
         return alunoService.buscarPorNome(nome);
     }
 
     public void listarAlunos() {
+
         alunoService.listar();
     }
 }

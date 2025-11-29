@@ -1,6 +1,8 @@
 package model;
+import enums.STATUSALUNO;
+import model.interfaces.Certificavel;
 
-public class Aluno extends Pessoa {
+public class Aluno extends Pessoa implements Certificavel {
     private double nota1, nota2, nota3;
     private int presencas, totalAulas;
 
@@ -13,10 +15,12 @@ public class Aluno extends Pessoa {
     }
 
     public void registrarPresenca() {
+
         presencas++;
     }
 
     public void setTotalAulas(int totalAulas) {
+
         this.totalAulas = totalAulas;
     }
 
@@ -25,27 +29,41 @@ public class Aluno extends Pessoa {
         this.nota2 = n2;
         this.nota3 = n3;
     }
-
+    @Override
     public double calcularMedia() {
-        return (nota1 + nota2 + nota3) / 3;
+
+        return (nota1 + nota2 + nota3) / 3.0;
     }
-
-    public void emitirCertificado() {
-        double media = calcularMedia();
-        double freq = calcularFrequencia();
-
-        if (media >= 7 && freq >= 75) {
-            System.out.println("Certificado emitido para " + nome + "!");
-            System.out.println("Média: " + media + " | Frequência: " + freq + "%");
-        } else {
-            System.out.println(nome + " não atingiu os requisitos.");
-            System.out.println("Média: " + media + " | Frequência: " + freq + "%");
-        }
-    }
-
+    @Override
     public double calcularFrequencia() {
         if (totalAulas == 0) return 0;
         return (presencas * 100.0) / totalAulas;
+    }
+    public STATUSALUNO getStatus() {
+        double media = calcularMedia();
+        double freq = calcularFrequencia();
+
+        if (media >= 7 && freq >= 75)
+            return STATUSALUNO.APROVADO;
+
+        if (media < 7)
+            return STATUSALUNO.REPROVADO_NOTA;
+
+        if (freq < 75)
+            return STATUSALUNO.REPROVADO_FREQUENCIA;
+
+        return STATUSALUNO.CURSANDO;
+    }
+    @Override
+    public void emitirCertificado() {
+        STATUSALUNO status = getStatus();
+        System.out.println("Status: " + status);
+
+        if (status == STATUSALUNO.APROVADO) {
+            System.out.println("Certificado emitido para " + nome);
+        } else {
+            System.out.println("Aluno não atingiu os requisitos.");
+        }
     }
 
     public double getNota1() {

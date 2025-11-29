@@ -15,12 +15,15 @@ public class Curso {
     }
 
     public String getNome() {
+
         return nome;
     }
     public int getTotalAulas() {
+
         return totalAulas;
     }
     public Professor getProfessor() {
+
         return professor;
     }
 

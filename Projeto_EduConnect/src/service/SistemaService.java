@@ -67,7 +67,7 @@ public class SistemaService {
                     break;
 
                 // ------------------ CURSO ------------------
-                case 3:
+                case 3: {
                     System.out.print("Nome do curso: ");
                     String nomeCurso = sc.nextLine();
 
@@ -78,22 +78,28 @@ public class SistemaService {
                     int totalAulas = sc.nextInt();
                     sc.nextLine();
 
-                    controller.getCursoController()
-                            .cadastrarCurso(nomeCurso, nomeProf, totalAulas);
+                    controller.getCursoController().cadastrarCurso(nomeCurso, nomeProf, totalAulas);
                     break;
+                }
 
                 // ------------------ PRESENÇA ------------------
-                case 4:
+                case 4: {
                     System.out.print("Aluno: ");
-                    String nomeAlunoPres = sc.nextLine();
+                    String nomeAP = sc.nextLine();
 
-                    System.out.print("Total de aulas do curso: ");
-                    int total = sc.nextInt();
+                    System.out.print("Curso: ");
+                    String nomeCursoPresenca = sc.nextLine();
+
+                    int totalAulas = cursoService.buscarPorNome(nomeCursoPresenca).getTotalAulas();
+
+                    System.out.print("Quantidade de presenças: ");
+                    int presencas = sc.nextInt();
                     sc.nextLine();
 
                     controller.getAlunoController()
-                            .registrarPresenca(nomeAlunoPres, total);
+                            .registrarPresenca(nomeAP, totalAulas, presencas);
                     break;
+                }
 
                 // ------------------ NOTAS ------------------
                 case 5:
